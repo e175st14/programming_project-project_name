@@ -1,12 +1,11 @@
 #!/bin/bash
 
 FILE=$1
-LOG_FILE="*.log"
 TIMESTAMP="^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}$"
 STATUS=("SUCCESS" "ERROR" "WARNING")
 
 # $TOTAL counts the number of log lines in the log file
-TOTAL=$(grep -c "$TIMESTAMP" "$LOG_FILE")
+TOTAL=$(grep -c "$TIMESTAMP" "$FILE")
 # $error_lines captures the entire log line for lines with Error status
 error_lines="$TIMESTAMP $STATUS[2] *\n"
 
@@ -23,7 +22,7 @@ if [[ "$FILE" != *.log ]]; then
 fi 
 
 # If file is a .log file, continue to produce a summary report
-if [[ "$FILE" = "$LOG_FILE" ]]; then
+if [[ "$FILE" = *.log ]]; then
 	echo "----------------------------"
 	echo "Log Analysis Report"
 	echo "----------------------------"
@@ -34,8 +33,8 @@ if [[ "$FILE" = "$LOG_FILE" ]]; then
 	echo "SUCCESS: $(counts[SUCCESS])"
 	echo "ERROR: $(counts[ERROR])"
 	echo "WARNING: $(counts[WARNING])"
-	echo "First entry: $(head -n 1 "$LOG_FILE" | awk '{print $TIMESTAMP}')"
-	echo "Last entry: $(tail -n 1 "$LOG_FILE" | awk '{print $TIMESTAMP}')"
+	echo "First entry: $(head -n 1 "$FILE" | awk '{print $TIMESTAMP}')"
+	echo "Last entry: $(tail -n 1 "$FILE" | awk '{print $TIMESTAMP}')"
 	exit 1 
 fi
 
