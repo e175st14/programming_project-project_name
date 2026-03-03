@@ -1,13 +1,12 @@
 #!/bin/bash
 
 FILE=$1
-TIMESTAMP=$(grep -E $'^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}$')
-STATUS=("SUCCESS" "ERROR" "WARNING")
+TIMESTAMP=$(grep -Eo $'[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}' "$FILE")
 
 # $TOTAL counts the number of log lines in the log file
-TOTAL=$(grep -c "$TIMESTAMP" "$FILE")
+TOTAL=$(awk 'END{print NR}' "$FILE")
 # $error_lines captures the entire log line for lines with Error status
-error_lines=$(grep "ERROR" "$FILE" | awk '{print}')
+error_lines=$(awk '$2=="ERROR"' "$FILE" | awk '{print}')
 
 # Check if input file exists
 if [ ! -f "$FILE" ]; then
@@ -30,11 +29,11 @@ if [[ "$FILE" = *.log ]]; then
 	echo "$error_lines"
 	echo "=== Summary ==="
 	echo "Total Entries: $TOTAL"
-	echo "SUCCESS: $(grep -c "SUCCESS")"
-	echo "ERROR: $(grep -c "ERROR")"
-	echo "WARNING: $(grep -c "WARNING")"
-	echo "First entry: $(head -n 1 "$FILE" | awk '{print $TIMESTAMP}')"
-	echo "Last entry: $(tail -n 1 "$FILE" | awk '{print $TIMESTAMP}')"
+	echo "SUCCESS: $(grep -c "SUCCESS" "$FILE")"
+	echo "ERROR: $(grep -c "ERROR" "$FILE")"
+	echo "WARNING: $(grep -c "WARNING" "$FILE")"
+	echo "First entry: $(grep -Eo $'[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}' "$FILE" | head -n 1)"
+	echo "Last entry: $(grep -Eo $'[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}' "$FILE" | tail -n 1)"
 	exit 1 
 fi
 
