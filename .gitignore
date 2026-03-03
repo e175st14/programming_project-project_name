@@ -1,0 +1,11 @@
+*.vcf.gz
+*.bam
+*.fastq.gz
+*.fasta
+*~
+*.tmp
+*.log
+*.swp
+.DS_Store
+Thumbs.db
+results/
