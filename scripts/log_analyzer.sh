@@ -8,6 +8,12 @@ TOTAL=$(awk 'END{print NR}' "$FILE")
 # $error_lines captures the entire log line for lines with Error status
 error_lines=$(awk '$2=="ERROR"' "$FILE" | awk '{print}')
 
+# Check if first argument exists
+if [ -z "$FILE" ]; then
+	echo "Usage: $0 <file>."
+	exit 1
+fi
+
 # Check if input file exists
 if [ ! -f "$FILE" ]; then
 	echo "Error: File '$FILE' not found."
