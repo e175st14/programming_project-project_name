@@ -43,3 +43,5 @@ WARNING: 1
 First entry: 2026-01-15T10:00:00
 Last entry: 2026-01-15T10:20:00
 
+In the process of developing my scripts, I used Gemini AI to assist in troubleshooting errors that arose when running 
+log_analyzer.sh and test.sh, such as refining the workflow of my scripts or fixing syntax issues in the script. 
