@@ -2,7 +2,6 @@
 *.bam
 *.fastq.gz
 *.fasta
-*~
 *.tmp
 *.swp
 .DS_Store

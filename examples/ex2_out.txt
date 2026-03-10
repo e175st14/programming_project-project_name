@@ -1,0 +1,1 @@
+Error: File must be a .log file.

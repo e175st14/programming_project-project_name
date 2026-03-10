@@ -1,5 +1,0 @@
-2026-01-15T11:00:00 SUCCESS initialization System_Ready
-2026-01-15T11:02:30 WARNING ingestion Low_memory_detected
-2026-01-15T11:05:00 ERROR processing Database_connection_lost
-2026-01-15T11:10:00 ERROR processing Retry_failed_after_3_attempts
-2026-01-15T11:15:00 WARNING cleanup Temp_files_not_deleted

@@ -1,0 +1,12 @@
+----------------------------
+Log Analysis Report
+----------------------------
+=== Errors ===
+2026-01-15T10:15:00 ERROR variant_call Failed to call variants on chr3
+=== Summary ===
+Total Entries: 5
+SUCCESS: 3
+ERROR: 1
+WARNING: 1
+First entry: 2026-01-15T10:00:00
+Last entry: 2026-01-15T10:20:00

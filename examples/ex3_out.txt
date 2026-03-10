@@ -1,0 +1,14 @@
+----------------------------
+Log Analysis Report
+----------------------------
+=== Errors ===
+2026-03-09T20:45:10  ERROR   Connection timeout from server.
+2026-03-09T20:46:00  ERROR   Disk write failed: "Error code 0x5".
+2026-03-09T20:46:10  ERROR   System shutdown.
+=== Summary ===
+Total Entries: 9
+SUCCESS: 0
+ERROR: 3
+WARNING: 1
+First entry: 2026-03-09T20:45:01
+Last entry: 2026-03-09T20:46:10

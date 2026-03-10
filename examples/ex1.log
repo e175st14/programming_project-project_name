@@ -1,0 +1,5 @@
+2026-01-15T10:00:00 SUCCESS setup Environment configured
+2026-01-15T10:05:00 SUCCESS alignment Aligned 5000 reads
+2026-01-15T10:10:00 WARNING filtering 12 reads below quality threshold
+2026-01-15T10:15:00 ERROR variant_call Failed to call variants on chr3
+2026-01-15T10:20:00 SUCCESS reporting Report generated
