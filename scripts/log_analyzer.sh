@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if first argument exists
-if [ -z "$FILE" ]; then
+if [ -z "$1" ]; then
         echo "Usage: $0 <file>."
         exit 1
 fi
@@ -38,9 +38,9 @@ if [[ "$FILE" = *.log ]]; then
 	echo "$error_lines"
 	echo "=== Summary ==="
 	echo "Total Entries: $TOTAL"
-	echo "SUCCESS: $(grep -c "SUCCESS" "$FILE")"
-	echo "ERROR: $(grep -c "ERROR" "$FILE")"
-	echo "WARNING: $(grep -c "WARNING" "$FILE")"
+	echo "SUCCESS: $(awk '$2=="SUCCESS" {count++} END {print count+0}' "$FILE")"
+	echo "ERROR: $(awk '$2=="ERROR" {count++} END {print count+0}' "$FILE")"
+	echo "WARNING: $(awk '$2=="WARNING" {count++} END {print count+0}' "$FILE")"
 	echo "First entry: $(grep -Eo $'[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}' "$FILE" | head -n 1)"
 	echo "Last entry: $(grep -Eo $'[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}' "$FILE" | tail -n 1)"
 	exit 1
