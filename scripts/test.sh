@@ -69,7 +69,7 @@ COMMAND="./scripts/log_analyzer.sh"
 EXAMPLE_DIR="./examples"
 
 for input_file in "$EXAMPLE_DIR"/*; do
-        if [[ "$input_file" == *"_out.txt" ]]; then
+        if [ "$input_file" == *"_out.txt" ]; then
 		continue
 	fi
 

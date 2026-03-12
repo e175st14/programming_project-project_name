@@ -15,7 +15,7 @@ if [ ! -f "$FILE" ]; then
 fi
 
 # If the file exists, check if file is in the correct format (.log)
-if [[ "$FILE" != *.log ]]; then
+if [ "$FILE" != *.log ]; then
         echo "Error: File must be a .log file."
         exit 1
 fi
@@ -29,8 +29,8 @@ TOTAL=$(awk 'END{print NR}' "$FILE")
 # $error_lines captures the entire log line for lines with Error status
 error_lines=$(awk '$2=="ERROR"' "$FILE" | awk '{print}')
 
-# If file is a .log file, continue to produce a summary report
-if [[ "$FILE" = *.log ]]; then
+# If the file is a .log file, continue to produce a summary report
+if [ "$FILE" = *.log ]; then
 	echo "----------------------------"
 	echo "Log Analysis Report"
 	echo "----------------------------"
